@@ -15,25 +15,25 @@ let count = 0;
 
 // back btn envent listener
 backBtn.addEventListener('click', () => {
-  let nextImgPos = count--;
-  if (imageArr[nextImgPos]) {
-    imageContainer.style.backgroundImage = `url(images/${imageArr[nextImgPos]}.jpg)`;
-  } else {
-    imageContainer.style.backgroundImage = `url(images/${imageArr[5]}.jpg`;
-    count = 5;
-  }
 
+  if (count == 0) {
+    imageContainer.style.backgroundImage = `url(images/${imageArr[5]}.jpg)`;
+    count = 5;
+  } else {
+    count--;
+    imageContainer.style.backgroundImage = `url(images/${imageArr[count]}.jpg)`;
+  }
 });
 
 
 // forward btn event listener
 forwardBtn.addEventListener('click', () => {
-  let nextImgPos = count++;
-  if (imageArr[nextImgPos]) {
-    imageContainer.style.backgroundImage = `url(images/${imageArr[nextImgPos]}.jpg)`;
+  if (count == imageArr.length - 1) {
+    imageContainer.style.backgroundImage = `url(images/${imageArr[0]}.jpg)`;
+    count = 0;
   } else {
-    imageContainer.style.backgroundImage = `url(images/${imageArr[0]}.jpg`;
-    count = 1;
+    count++;
+    imageContainer.style.backgroundImage = `url(images/${imageArr[count]}.jpg)`;
   }
 });
 
